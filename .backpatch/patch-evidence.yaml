@@ -1,0 +1,21 @@
+schema: osera-patch-evidence/0.1.0
+producer: moderne
+release: 4.0.1-backpatch-00001
+baseline: v4.0+backpatch.baseline
+fixes:
+  - cve: CVE-2015-6420
+    upstream_fix_url: https://github.com/apache/commons-collections/commit/e585cd0433ae4cfbc56e58572b9869bd0c86b611
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2015-6420
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-commons-collections/compare/a80fbbe~1...78d12a9
+    basis: adapted
+    artifacts:
+      - org.apache.commons:commons-collections4
+    note: "New in this release; ported onto 4.0; fixed at 4.0.1-backpatch-00001 (backpatch-commons-collections@a80fbbe..78d12a9). CloneTransformer, ForClosure, InstantiateFactory, InstantiateTransformer, InvokerTransformer, PrototypeFactory's clone and serialization factories and WhileClosure are no longer Serializable, as upstream's 4.1 (COLLECTIONS-580): serializing one throws NotSerializableException, and instances serialized by 4.0 no longer deserialize. MultiValueMap stays serializable but on deserialization accepts only a Collection class for its values."
+tests:
+  commit: 78d12a9bc01abe15d0dc0fcd01b2ba8b9914057a
+  command: mvn -B -T1  -Dmaven.test.failure.ignore=true clean test
+  runtime: openjdk version 1.8.0_382, Apache Maven 3.9.16
+  report: commons-collections4-4.0.1-backpatch-00001-tests.zip
+  report_sha256: 6cc32d7232896d3b5b3e19f4117c1693a3713c5270f8ade71c05a5ab81a5d86d
+  result: pass
+  note: 13686 tests at the patch commit, 0 of them skipped by the suite, 0 failed, 0 errors.
