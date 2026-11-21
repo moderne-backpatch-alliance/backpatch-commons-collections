@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections4.functors.CloneTransformer;
 import org.apache.commons.collections4.functors.ConstantTransformer;
 import org.apache.commons.collections4.functors.EqualPredicate;
 import org.apache.commons.collections4.functors.ExceptionTransformer;
@@ -431,7 +430,6 @@ public class TransformerUtilsTest extends junit.framework.TestCase {
      */
     public void testSingletonPatternInSerialization() {
         final Object[] singletones = new Object[] {
-                CloneTransformer.INSTANCE,
                 ExceptionTransformer.INSTANCE,
                 NOPTransformer.INSTANCE,
                 StringValueTransformer.stringValueTransformer(),
